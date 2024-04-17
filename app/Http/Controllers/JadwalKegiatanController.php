@@ -12,7 +12,10 @@ class JadwalKegiatanController extends Controller
      */
     public function index()
     {
-        //
+        return view('home.jadwal-kegiatan.index', [
+            'no'=> 0,
+            'jadwals'=> JadwalKegiatan::latest()->get()
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class JadwalKegiatanController extends Controller
      */
     public function create()
     {
-        //
+        return 'tambah jadwal kegiatan';
     }
 
     /**

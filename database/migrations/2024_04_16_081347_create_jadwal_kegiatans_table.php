@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tanggal_kegiatan');
             $table->string('waktu');
             $table->string('undangan');
+            $table->string('verifikasi');
             $table->date('tanggal_verifikasi');
             $table->string('dihadiri');
             $table->string('yang_mewakilkan');

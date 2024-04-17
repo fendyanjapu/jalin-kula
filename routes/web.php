@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\JadwalKegiatanController;
+use App\Models\DokumentasiKegiatan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home.index');
+})->name('home');
 
-Route::get('/jadwal-kegiatan', function () {
-    return 'Jadwal kegiatan';
-});
+Route::get('selayang-pandang', function () {
+    return view('home.selayang-pandang');
+})->name('home.selayang-pandang');
+
+Route::get('dokumentasi-kegiatan-pimpinan', function () {
+    return view('home.dokumentasi', [
+        'dokumentasis'=> DokumentasiKegiatan::all(),
+    ]);
+})->name('home.dokumentasi');
+
+Route::resource('jadwal-kegiatan', JadwalKegiatanController::class)->except('edit','update','destroy');
