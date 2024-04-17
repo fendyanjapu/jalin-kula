@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('home.index');
 })->name('home');
 
+Route::get('tutorial', function () {
+    return view('home.tutorial');
+})->name('tutorial');
+
 Route::get('selayang-pandang', function () {
     return view('home.selayang-pandang');
 })->name('home.selayang-pandang');

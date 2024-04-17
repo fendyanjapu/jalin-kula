@@ -57,7 +57,7 @@
         <ul>
           <li>
               <a class="nav-link scrollto active" href="">Login</a></li>
-              <a class="nav-link scrollto active" href="">Tutorial</a></li>
+              <a class="nav-link scrollto active" href="{{ route('tutorial') }}">Tutorial</a></li>
           
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
