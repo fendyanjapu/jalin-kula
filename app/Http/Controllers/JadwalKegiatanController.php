@@ -15,7 +15,7 @@ class JadwalKegiatanController extends Controller
     {
         return view('home.jadwal-kegiatan.index', [
             'no'=> 0,
-            'jadwals'=> JadwalKegiatan::latest()->get()
+            'jadwals'=> JadwalKegiatan::where('verifikasi', '=', 1 )->latest()->get()
         ]);
     }
 
@@ -35,7 +35,35 @@ class JadwalKegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nama_kegiatan'=> 'required|max:255',
+            'dari'=> 'required|max:255',
+            'tempat_kegiatan'=> 'required|max:255',
+            'tanggal_kegiatan'=> 'required|date',
+            'waktu'=> 'required|max:255',
+            'pakaian'=> 'required|max:255',
+            'no_hp'=> 'required|max:255',
+        ];
+        $tanggal_kegiatan = $request->tanggal_kegiatan;
+
+        if ($tanggal_kegiatan != '0000-00-00') {
+            $diundang = '';
+            $yang_diundang = $request->yang_diundang;
+
+            if ($yang_diundang != '') {
+                foreach ($yang_diundang as $item) {
+                    $diundang .= $item . '<br>';
+                }
+            }
+
+            $validatedData = $request->validate($rules);
+            $validatedData['verifikasi'] = '0';
+            $validatedData['yang_diundang'] = $diundang;
+
+            JadwalKegiatan::create($validatedData);
+
+            return redirect()->route('jadwal-kegiatan.index')->with('success','Undangan Kegiatan Berhasil Disimpan. Tunggu Verifikasi Admin');
+        }
     }
 
     /**

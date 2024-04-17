@@ -40,6 +40,12 @@
                 <a href="#"></a>
               </h2>
 
+              @if (session()->has('success'))
+                  <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                  </div>
+              @endif
+
               <!--<div class="entry-meta">-->
               <!--  <ul>-->
               <!--    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>-->

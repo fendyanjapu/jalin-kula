@@ -19,15 +19,15 @@ return new class extends Migration
             $table->string('tempat_kegiatan');
             $table->date('tanggal_kegiatan');
             $table->string('waktu');
-            $table->string('undangan');
+            $table->string('undangan')->nullable();
             $table->string('verifikasi');
-            $table->date('tanggal_verifikasi');
-            $table->string('dihadiri');
-            $table->string('yang_mewakilkan');
-            $table->string('tambahan_yang_hadir');
+            $table->date('tanggal_verifikasi')->nullable();
+            $table->string('dihadiri')->nullable();
+            $table->string('yang_mewakilkan')->nullable();
+            $table->string('tambahan_yang_hadir')->nullable();
             $table->string('pakaian');
             $table->string('no_hp');
-            $table->string('yang_diundang');
+            $table->text('yang_diundang');
 
             $table->timestamps();
         });
