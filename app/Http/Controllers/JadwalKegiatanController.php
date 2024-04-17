@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalKegiatan;
+use App\Models\Pejabat;
 use Illuminate\Http\Request;
 
 class JadwalKegiatanController extends Controller
@@ -23,7 +24,10 @@ class JadwalKegiatanController extends Controller
      */
     public function create()
     {
-        return 'tambah jadwal kegiatan';
+        return view('home.jadwal-kegiatan.create', [
+            'i'=> 0,
+            'pejabats'=> Pejabat::all()
+        ]);
     }
 
     /**
