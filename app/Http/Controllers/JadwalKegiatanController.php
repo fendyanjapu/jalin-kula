@@ -43,6 +43,7 @@ class JadwalKegiatanController extends Controller
             'waktu'=> 'required|max:255',
             'pakaian'=> 'required|max:255',
             'no_hp'=> 'required|max:255',
+            'undangan'=> 'file|max:4096'
         ];
         $tanggal_kegiatan = $request->tanggal_kegiatan;
 
@@ -57,6 +58,10 @@ class JadwalKegiatanController extends Controller
             }
 
             $validatedData = $request->validate($rules);
+
+            if ($request->file('undangan')) {
+                $validatedData['undangan'] = $request->file('undangan')->store('undangan');
+            }
             $validatedData['verifikasi'] = '0';
             $validatedData['yang_diundang'] = $diundang;
 
