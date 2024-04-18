@@ -8,14 +8,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
     
-<link href="assets_login/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="assets_login/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets_login/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets_login/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
 
-<link href="assets_login/css/font-awesome.css" rel="stylesheet">
+<link href="/assets_login/css/font-awesome.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
     
-<link href="assets_login/css/style.css" rel="stylesheet" type="text/css">
-<link href="assets_login/css/pages/signin.css" rel="stylesheet" type="text/css">
+<link href="/assets_login/css/style.css" rel="stylesheet" type="text/css">
+<link href="/assets_login/css/pages/signin.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -45,7 +45,11 @@
 	
 </div> <!-- /navbar -->
 
-
+@if (session()->has('loginError'))
+	<div class="alert alert-danger" role="alert">
+		{{ session('loginError') }}
+	</div>
+@endif
 
 <div class="account-container">
 	
@@ -83,10 +87,10 @@
 	
 </div> <!-- /account-container -->
 
-<script src="assets_login/js/jquery-1.7.2.min.js"></script>
-<script src="assets_login/js/bootstrap.js"></script>
+<script src="/assets_login/js/jquery-1.7.2.min.js"></script>
+<script src="/assets_login/js/bootstrap.js"></script>
 
-<script src="assets_login/js/signin.js"></script>
+<script src="/assets_login/js/signin.js"></script>
 
 </body>
 
