@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JadwalKegiatanController;
+use App\Http\Controllers\LoginController;
 use App\Models\DokumentasiKegiatan;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home.index');
 })->name('home');
+
+Route::get('login', [LoginController::class,'index'])->name('login');
+Route::post('login', [LoginController::class,'login'])->name('signin');
 
 Route::get('tutorial', function () {
     return view('home.tutorial');
