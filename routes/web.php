@@ -44,4 +44,6 @@ Route::get('dokumentasi-kegiatan-pimpinan', function () {
 })->name('home.dokumentasi');
 
 Route::resource('jadwal-kegiatan', JadwalKegiatanController::class)->except('edit','update','destroy');
-Route::resource('undangan-kegiatan', UndanganController::class)->except('create','store');
+Route::resource('undangan-kegiatan', UndanganController::class)->except('create','store','show');
+
+Route::get('undangan-kegiatan/verifikasi', [UndanganController::class,'verifikasi'])->name('verifikasi');

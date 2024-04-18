@@ -62,8 +62,16 @@ class UndanganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalKegiatan $jadwalKegiatan)
+    public function destroy(string $id)
     {
-        //
+        $jadwalKegiatan = JadwalKegiatan::findOrFail( $id );
+        $jadwalKegiatan->delete();
+
+        return redirect()->route('undangan-kegiatan.index')->with('success','Jadwal berhasil dihapus');
+    }
+
+    public function verifikasi()
+    {
+
     }
 }

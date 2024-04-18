@@ -150,8 +150,11 @@
                             <?php endif ?>
                         <?php endif ?>
                         <a href="" class="btn btn-default">Edit</a>
-                        <a href="" class="btn btn-danger" onclick="return confirm('Hapus <?php echo $jadwal->nama_kegiatan ?>?')">Hapus</a>
-                        </div>
+                        <form action="{{ route('undangan-kegiatan.destroy', $jadwal->id) }}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('Hapus data?')">Hapus</button>
+                        </form>
                         
                 </tr>
                 @endforeach
