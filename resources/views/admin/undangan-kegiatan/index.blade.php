@@ -149,7 +149,7 @@
                                 <a href="" class="btn btn-success">Wakilkan</a>
                             <?php endif ?>
                         <?php endif ?>
-                        <a href="" class="btn btn-default">Edit</a>
+                        <a href="{{ route('undangan-kegiatan.edit', ['undangan_kegiatan' => $jadwal]) }}" class="btn btn-default">Edit</a>
                         <form action="{{ route('undangan-kegiatan.destroy', $jadwal->id) }}" method="post">
                             @method('delete')
                             @csrf

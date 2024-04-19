@@ -46,17 +46,28 @@ class UndanganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JadwalKegiatan $jadwalKegiatan)
+    public function edit(JadwalKegiatan $undangan_kegiatan)
     {
-        //
+        return view('admin.undangan-kegiatan.edit', ['jadwalKegiatan' => $undangan_kegiatan]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalKegiatan $jadwalKegiatan)
+    public function update(Request $request, JadwalKegiatan $undangan_kegiatan)
     {
-        //
+        $rules = [
+            'nama_kegiatan'=> 'required|max:255',
+            'dari'=> 'required|max:255',
+            'tempat_kegiatan'=> 'required|max:255',
+            'tanggal_kegiatan'=> 'required|date',
+            'waktu'=> 'required|max:255',
+            'pakaian'=> 'required|max:255',
+        ];
+        $validatedData = $request->validate($rules);
+        $undangan_kegiatan->update($validatedData);
+
+        return redirect()->route('undangan-kegiatan.index')->with('success','Jadwal Kegiatan Updated');
     }
 
     /**
