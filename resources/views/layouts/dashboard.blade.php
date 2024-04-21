@@ -34,13 +34,18 @@
           <li><a href="{{ route('dashboard') }}"><i class="icon-home"></i><span>Home</span> </a> </li>
           
           <li><a href="{{ route('undangan-kegiatan.index') }}"><i class="icon-list"></i><span>Jadwal Kegiatan</span> </a> </li>
-          <li><a href=""><i class="icon-picture"></i><span>Dokumentasi Kegiatan</span> </a> </li>
-          <li><a href=""><i class="icon-user"></i><span>Admin</span> </a> </li>
-          <li><a href=""><i class="icon-group"></i><span>Pejabat</span> </a> </li>
-          <li><a href="" target="_blank"><i class="icon-file"></i><span>Laporan</span> </a> </li>
+          <li><a href="{{ route('dokumentasi-kegiatan.index') }}"><i class="icon-picture"></i><span>Dokumentasi Kegiatan</span> </a> </li>
+          <li><a href="{{ route('admin') }}"><i class="icon-user"></i><span>Admin</span> </a> </li>
+          <li><a href="{{ route('pejabat.index') }}"><i class="icon-group"></i><span>Pejabat</span> </a> </li>
+          <li><a href="{{ route('laporan') }}" target="_blank"><i class="icon-file"></i><span>Laporan</span> </a> </li>
           
-          
-          <li><a href=""><i class="icon-signout"></i><span>Keluar</span> </a> </li>
+          <li>
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button><i class="icon-signout"></i> Keluar</button>
+              
+            </form>
+          </li>
         </ul>
       </div>
       <!-- /container --> 

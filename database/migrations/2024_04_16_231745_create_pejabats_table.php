@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('nama_pejabat');
             $table->string('jabatan');
             $table->string('no_wa');
-            $table->string('group');
-            $table->string('class');
-            $table->string('onchange');
-            $table->string('br');
+            $table->string('group')->nullable();
+            $table->string('class')->nullable();
+            $table->string('onchange')->nullable();
+            $table->string('br')->nullable();
             
             $table->timestamps();
         });

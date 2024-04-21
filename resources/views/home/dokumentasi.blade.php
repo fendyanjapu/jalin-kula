@@ -57,7 +57,7 @@
                             @forelse ($dokumentasis as $dokumentasi)
                                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="box">
-                                    <img src="" class="img-fluid" alt="">
+                                    <img src="{{ asset('storage/' . $dokumentasi->foto) }}" class="img-fluid" alt="">
                                     <h3>{{ $dokumentasi->nama_kegiatan }}</h3>
                                     </div>
                                 </div> 

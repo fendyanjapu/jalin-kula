@@ -56,7 +56,11 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li>
+            @auth
+              <a class="nav-link scrollto active" href="{{ route('dashboard') }}">Dashboard</a></li>
+            @else
               <a class="nav-link scrollto active" href="{{ route('login') }}">Login</a></li>
+            @endauth
               <a class="nav-link scrollto active" href="{{ route('tutorial') }}">Tutorial</a></li>
           
         </ul>
