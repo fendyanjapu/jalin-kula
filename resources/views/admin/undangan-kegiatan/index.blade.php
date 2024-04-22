@@ -22,18 +22,18 @@
                     }
                 }
             ],
-            drawCallback: function (settings) {
-                // Output the data for the visible rows to the browser's console
-                var api = this.api();
+            // drawCallback: function (settings) {
+            //     // Output the data for the visible rows to the browser's console
+            //     var api = this.api();
  
-                // Output the data for the visible rows to the browser's console
-                var page = api.rows({ page: 'current' }).page();
-                // console.log(page);
-                $('#page').val(page);
+            //     // Output the data for the visible rows to the browser's console
+            //     var page = api.rows({ page: 'current' }).page();
+            //     // console.log(page);
+            //     $('#page').val(page);
                 
-            }
+            // }
         });
-        table.page(pageNo).draw('page');
+        // table.page(pageNo).draw('page');
     } );
 </script>
 <div class="row">
@@ -43,7 +43,11 @@
 </div>
 <!-- /. ROW  -->
 <hr />
-
+@if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+    {{ session('success') }}
+    </div>
+@endif
 <input type="hidden" name="page" id="page" >
 <div class="panel-body" style="margin-top: 10px">
     <div class="table-responsive">
@@ -69,7 +73,7 @@
             <tbody>
                 @foreach ($jadwals as $jadwal)
                 <tr>
-                    <td style="text-align:center"><?php echo $no++ ?></td>
+                    <td style="text-align:center">{{ $loop->iteration }}</td>
                     <td style="text-align:center">
                         <?php 
                             $tgl = date_create($jadwal->tanggal_kegiatan);
@@ -133,20 +137,20 @@
                     <?php if (auth()->user()->username == 'admin'): ?>
                         <td style="text-align:center"><?php echo $jadwal->no_hp ?></td>
                         <td style="text-align:center">
-                            <a href="" class="btn btn-primary">Tambahkan</a>
+                            <a href="{{ route('tambah-yg-hadir', ['undangan_kegiatan' => $jadwal]) }}" class="btn btn-primary">Tambahkan</a>
                         </td>
                     <?php endif ?>
                     <td style="text-align:center">
                         <div class="d-flex p-2">
                             <?php if (auth()->user()->username == 'admin'): ?>
                             <?php if ($jadwal->verifikasi == 0): ?>
-                                <a href="#" class="btn btn-success" onclick="verifikasi(<?= $jadwal->id_undangan_kegiatan ?>)">Verifikasi</a>
+                                <a href="{{ route('undangan-kegiatan.show', ['undangan_kegiatan' => $jadwal]) }}" class="btn btn-success">Verifikasi</a>
                             <?php endif ?>
                         <?php elseif (auth()->user()->username == 'bupati'): ?>
-                            <a href="" class="btn btn-success">Hadiri/Wakilkan</a>
+                            <a href="{{ route('hadiri-undangan', ['undangan_kegiatan' => $jadwal]) }}" class="btn btn-success">Hadiri/Wakilkan</a>
                         <?php elseif (auth()->user()->username == 'sekda'): ?>
                             <?php if ($jadwal->yang_mewakilkan == 'Sekda'): ?>
-                                <a href="" class="btn btn-success">Wakilkan</a>
+                                <a href="{{ route('hadiri-undangan', ['undangan_kegiatan' => $jadwal]) }}" class="btn btn-success">Wakilkan</a>
                             <?php endif ?>
                         <?php endif ?>
                         <a href="{{ route('undangan-kegiatan.edit', ['undangan_kegiatan' => $jadwal]) }}" class="btn btn-default">Edit</a>

@@ -55,10 +55,14 @@ Route::get('dokumentasi-kegiatan-pimpinan', function () {
 })->name('home.dokumentasi');
 
 Route::get('laporan', [LaporanController::class, 'index'] )->name('laporan')->middleware('auth');
+Route::get('undangan-kegiatan/hadiri-undangan/{undangan_kegiatan}', [UndanganController::class, 'hadiri_undangan'] )->name('hadiri-undangan')->middleware('auth');
+Route::get('undangan-kegiatan/tambah-yg-hadir/{undangan_kegiatan}', [UndanganController::class, 'tambah_yg_hadir'] )->name('tambah-yg-hadir')->middleware('auth');
 
-Route::resource('jadwal-kegiatan', JadwalKegiatanController::class)->except('edit','update','destroy')->middleware('auth');
-Route::resource('undangan-kegiatan', UndanganController::class)->except('create','store','show')->middleware('auth');
+Route::resource('jadwal-kegiatan', JadwalKegiatanController::class)->except('edit','update','destroy');
+Route::resource('undangan-kegiatan', UndanganController::class)->except('create','store')->middleware('auth');
 Route::resource('pejabat', PejabatController::class)->except('show')->middleware('auth');
 Route::resource('dokumentasi-kegiatan', DokumentasiKegiatanController::class)->except('edit','update','show')->middleware('auth');
 
-Route::get('undangan-kegiatan/verifikasi', [UndanganController::class,'verifikasi'])->name('verifikasi')->middleware('auth');
+Route::put('undangan-kegiatan/verifikasi/{undangan_kegiatan}', [UndanganController::class,'verifikasi'])->name('verifikasi')->middleware('auth');
+Route::put('undangan-kegiatan/dihadiri/{undangan_kegiatan}', [UndanganController::class,'dihadiri'])->name('dihadiri')->middleware('auth');
+Route::put('undangan-kegiatan/update-yg-hadir/{undangan_kegiatan}', [UndanganController::class,'update_yg_hadir'])->name('update-yg-hadir')->middleware('auth');

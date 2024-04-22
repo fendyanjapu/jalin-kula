@@ -132,7 +132,7 @@
                         <td style="text-align:center"><?php echo $jadwal->pakaian ?></td>
                         <td style="text-align:center"><?php echo $jadwal->dari ?></td>
                         <td style="text-align:center">
-                            <a href="" class="btn btn-warning">Lihat</a>
+                            <a href="{{ route('jadwal-kegiatan.show', ['jadwal_kegiatan' => $jadwal]) }}" class="btn btn-warning">Lihat</a>
                         </td>
                     </tr>
                     @endforeach

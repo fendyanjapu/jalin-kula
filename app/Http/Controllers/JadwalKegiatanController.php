@@ -76,7 +76,9 @@ class JadwalKegiatanController extends Controller
      */
     public function show(JadwalKegiatan $jadwalKegiatan)
     {
-        //
+        return view('home.jadwal-kegiatan.yang_diundang', [
+            'jadwalKegiatan'=> $jadwalKegiatan
+        ]);
     }
 
     /**

@@ -40,6 +40,7 @@
           <li><a href="{{ route('laporan') }}" target="_blank"><i class="icon-file"></i><span>Laporan</span> </a> </li>
           
           <li>
+            <br>
             <form action="{{ route('logout') }}" method="POST">
               @csrf
               <button><i class="icon-signout"></i> Keluar</button>
