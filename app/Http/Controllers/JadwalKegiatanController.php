@@ -10,7 +10,7 @@ class JadwalKegiatanController extends Controller
 {
     public function __construct()
     {
-        $this->middleware("throttle:jadwal-kegiatan")->only("store");
+        $this->middleware("throttle:jadwal-kegiatan")->only("store","index");
     }
     /**
      * Display a listing of the resource.
