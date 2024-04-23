@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class JadwalKegiatanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("throttle:jadwal-kegiatan")->only("store");
+    }
     /**
      * Display a listing of the resource.
      */
