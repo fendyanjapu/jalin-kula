@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Jalin Kula - {{ auth()->user()->username }}</title>
+  <title>Jalin Kula V2 - {{ auth()->user()->username }}</title>
   <!-- Favicons -->
   <link href="img/JK2.png" rel="icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
